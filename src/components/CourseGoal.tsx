@@ -7,7 +7,6 @@ import { type PropsWithChildren, type ReactNode } from "react";
 // };
 
 type CourseGoalProps = PropsWithChildren<{ title: string }>;
-
 const CourseGoal = ({ title, children }: CourseGoalProps) => {
   return (
     <article>
