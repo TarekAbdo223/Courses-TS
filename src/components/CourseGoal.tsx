@@ -1,9 +1,14 @@
-const CourseGoal = (props: string) => {
+type CourseGoalProps = {
+  title: string;
+  description: string;
+};
+
+const CourseGoal = ({ title, description }: CourseGoalProps) => {
   return (
     <article>
       <div>
-        <h2>TITLE</h2>
-        <p>DESCRIPTION</p>
+        <h2>{title}</h2>
+        <p>{description}</p>
       </div>
       <button>Delete</button>
       <button>Edit</button>
