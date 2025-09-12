@@ -1,19 +1,28 @@
-import { type FormEvent } from "react";
-
-function handleSubmit(e: FormEvent) {
-  e.preventDefault();
-}
+import { useRef, type FormEvent } from "react";
 
 const NewGoal = () => {
+  const goal = useRef<HTMLInputElement>(null);
+  const summary = useRef<HTMLInputElement>(null);
+
+  function handleSubmit(e: FormEvent<HTMLFormElement>) {
+    // added the htmlformelement just to let typescript know that the e is related to our form
+    e.preventDefault();
+
+    //   new FormData(e.currentTarget);
+
+    const enteredGoal = goal.current!.value;
+    const enteredSummary = goal.current!.value;
+  }
+
   return (
     <form onSubmit={handleSubmit}>
       <p>
         <label htmlFor="goal">Your Goal</label>
-        <input type="text" id="goal" />
+        <input type="text" id="goal" ref={goal} />
       </p>
       <p>
         <label htmlFor="goal">short summary</label>
-        <input type="text" id="summary" />
+        <input type="text" id="summary" ref={summary} />
       </p>
       <p>
         <button>Add Goal</button>
