@@ -1,11 +1,19 @@
 import { type PropsWithChildren } from "react";
 
-type InfoBoxProps = PropsWithChildren<{
-  mode: "hint" | "warning";
-  severity?: "low" | "medium" | "high";
-}>;
+type HintProps = {
+  mode: "hint";
+};
 
-const InfoBox = ({ children, mode, severity }: InfoBoxProps) => {
+type WarningProps = {
+  mode: "warning";
+  severity: "low" | "medium" | "high";
+};
+
+type InfoBoxProps = PropsWithChildren<HintProps | WarningProps>;
+
+const InfoBox = (props: InfoBoxProps) => {
+  const { children, mode } = props;
+
   if (mode === "hint") {
     return (
       <aside className="infobox infobox-hint">
@@ -13,6 +21,8 @@ const InfoBox = ({ children, mode, severity }: InfoBoxProps) => {
       </aside>
     );
   }
+
+  const { severity } = props;
 
   return (
     <aside className={`infobox infobox-warning warning--${severity}`}>

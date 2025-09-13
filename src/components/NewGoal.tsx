@@ -18,6 +18,7 @@ const NewGoal = ({ onAddGoal }: NewGoalProps) => {
     const enteredSummary = summary.current!.value;
 
     e.currentTarget.reset();
+    goal.current?.focus();
     onAddGoal(enteredGoal, enteredSummary);
   }
 

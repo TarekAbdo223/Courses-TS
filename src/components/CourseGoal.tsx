@@ -19,7 +19,7 @@ const CourseGoal = ({ title, onDelete, id, children }: CourseGoalProps) => {
         {children}
       </div>
       <button onClick={() => onDelete(id)}>Delete</button>
-      <button>Edit</button>
+      {/* <button>Edit</button> */}
     </article>
   );
 };
