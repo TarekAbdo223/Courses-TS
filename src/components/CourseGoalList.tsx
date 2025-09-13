@@ -15,12 +15,10 @@ const CourseGoalList = ({ goals, onDelete }: CourseGoalListProps) => {
     );
   }
 
-  let war;
-
   return (
     <>
       {goals.length >= 4 && (
-        <InfoBox mode="warning">
+        <InfoBox mode="warning" severity="high">
           You're collecting a lot of goals. Don't put too much on your plate !
         </InfoBox>
       )}

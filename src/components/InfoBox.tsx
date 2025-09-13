@@ -1,8 +1,11 @@
 import { type PropsWithChildren } from "react";
 
-type InfoBoxProps = PropsWithChildren<{ mode: "hint" | "warning" }>;
+type InfoBoxProps = PropsWithChildren<{
+  mode: "hint" | "warning";
+  severity?: "low" | "medium" | "high";
+}>;
 
-const InfoBox = ({ children, mode }: InfoBoxProps) => {
+const InfoBox = ({ children, mode, severity }: InfoBoxProps) => {
   if (mode === "hint") {
     return (
       <aside className="infobox infobox-hint">
@@ -12,7 +15,7 @@ const InfoBox = ({ children, mode }: InfoBoxProps) => {
   }
 
   return (
-    <aside className="infobox infobox-warning warning--medium">
+    <aside className={`infobox infobox-warning warning--${severity}`}>
       <h2>Warning</h2>
       <p>{children}</p>
     </aside>
