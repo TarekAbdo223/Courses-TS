@@ -39,6 +39,20 @@ export default function App() {
     setGoals((prevGoals) => prevGoals.filter((goal) => goal.id !== id));
   }
 
+  function handleEditGoal(
+    id: string,
+    newTitle: string,
+    newDescription: string
+  ) {
+    setGoals((prevGoals) =>
+      prevGoals.map((goal) =>
+        goal.id === id
+          ? { ...goal, title: newTitle, description: newDescription }
+          : goal
+      )
+    );
+  }
+
   return (
     <main>
       <Header image={{ src: goalsImg, alt: "A list of goals" }}>
@@ -46,7 +60,11 @@ export default function App() {
       </Header>
       {/* <button onClick={handleAddGoal}>Add Goal</button> */}
       <NewGoal onAddGoal={handleAddGoal} />
-      <CourseGoalList goals={goals} onDelete={handleDeleteGoal} />
+      <CourseGoalList
+        goals={goals}
+        onDelete={handleDeleteGoal}
+        onEdit={handleEditGoal}
+      />
     </main>
   );
 }

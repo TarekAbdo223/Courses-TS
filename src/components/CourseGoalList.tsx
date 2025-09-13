@@ -5,8 +5,9 @@ import InfoBox from "./InfoBox";
 type CourseGoalListProps = {
   goals: CGoal[];
   onDelete: (id: string) => void;
+  onEdit: (id: string, newTitle: string, newDescription: string) => void;
 };
-const CourseGoalList = ({ goals, onDelete }: CourseGoalListProps) => {
+const CourseGoalList = ({ goals, onDelete, onEdit }: CourseGoalListProps) => {
   if (goals.length === 0) {
     return (
       <InfoBox mode="hint">
@@ -25,7 +26,12 @@ const CourseGoalList = ({ goals, onDelete }: CourseGoalListProps) => {
       <ul>
         {goals.map((goal) => (
           <li key={goal.id}>
-            <CourseGoal title={goal.title} onDelete={onDelete} id={goal.id}>
+            <CourseGoal
+              title={goal.title}
+              onDelete={onDelete}
+              id={goal.id}
+              onEdit={onEdit}
+            >
               <p>{goal.description}</p>
             </CourseGoal>
           </li>
